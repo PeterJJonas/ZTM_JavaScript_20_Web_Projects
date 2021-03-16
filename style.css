@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  color: #000000;
+  font-family: Rubik, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
