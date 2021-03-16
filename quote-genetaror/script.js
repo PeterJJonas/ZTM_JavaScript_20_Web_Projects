@@ -6,6 +6,7 @@ const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 const language = document.getElementById('language')
 let lang = 'en';
+let tryToFetchApi = 0;
 
 function showLoadingSpinner() {
   loader.hidden = false;
@@ -43,8 +44,16 @@ async function getQuoteFromApi() {
     removeLoadingSpinner();
     // throw new Error('hellahellahella!');
   } catch (error) {
-    console.log(error);
-    getQuoteFromApi();
+    // remove recursive function
+    tryToFetchApi++;
+    if (tryToFetchApi > 10) {
+      removeLoadingSpinner();
+      quoteText.innerText = 'Cannot connect to the server. Try it later.';
+      authorText.innerText = 'Buddha';
+      tryToFetchApi = 0;
+    } else {
+      getQuoteFromApi();
+    }
   }
 }
 
